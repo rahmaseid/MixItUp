@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>mixtape | login</title>
+   
+   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Abril+Fatface&family=Old+Standard+TT:wght@400;700&display=swap"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="newspaper-header">
+            <h1 class="newspaper-title">Make a Mixtape</h1>
+            <div class="newspaper-subtitle">Music for every moment, memories for a lifetime</div>
+        </div>
+        
+        <div class="content-area">
+            <div class="radio-section">
+                <div class="vintage-radio">
+                    <!-- Replace this with the path to your saved PNG/SVG file -->
+                    <img src="vintage_radio.png" alt="Vintage Radio" class="radio-image">
+                    <div class="radio-display" id="radio-message">CREATE YOUR MIXTAPE</div>
+                </div>
+                <div class="quote">
+                    "Where words fail, music speaks."
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div id="login-container">
+                    <div class="form-header">
+                        <h2>Welcome Back</h2>
+                        <p>Return to your personal collection</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="login-email">Email</label>
+                                <input type="email" id="login-email" required placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Password</label>
+                                <input type="password" id="login-password" required placeholder="••••••••">
+                            </div>
+                            <button type="submit">Login</button>
+                        </form>
+                        <div class="switch-form">
+                            Don't have an account? <a href="#" id="show-signup">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden" id="signup-container">
+                    <div class="form-header">
+                        <h2>Create Account</h2>
+                        <p>Start your musical journey today</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="signup-form">
+                            <div class="form-group">
+                                <label for="signup-name">Name</label>
+                                <input type="text" id="signup-name" required placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-email">Email</label>
+                                <input type="email" id="signup-email" required placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-password">Password</label>
+                                <input type="password" id="signup-password" required placeholder="••••••••">
+                            </div>
+                            <button type="submit">Sign Up</button>
+                        </form>
+                        <div class="switch-form">
+                            Already have an account? <a href="#" id="show-login">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Old Standard TT', serif;
+    background-color: #f8f3e3;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #2b2b2b;
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Newspaper Header */
+.newspaper-header {
+    text-align: center;
+    border-bottom: 3px double #704214;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.newspaper-title {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 4rem;
+    letter-spacing: -1px;
+    color: #704214;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.newspaper-date {
+    font-style: italic;
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.newspaper-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    border-top: 1px solid #704214;
+    border-bottom: 1px solid #704214;
+    padding: 5px 0;
+    margin: 10px auto;
+    max-width: 80%;
+}
+
+/* Content Area */
+.content-area {
+    display: flex;
+    gap: 20px;
+    background-color: #f8f3e3;
+    padding: 10px;
+    border: 1px solid #9c7a4d;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Radio Section */
+.radio-section {
+    flex: 0 0 45%;
+}
+
+.vintage-radio {
+    position: relative;
+    width: 100%;
+}
+
+.radio-image {
+    width: 380px;
+    height: 400px;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.radio-display {
+    position: absolute;
+    top: 60%;
+    left: 45%;
+    transform: translate(-50%, -10%);
+    width: 80%;
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.1rem;
+    padding: 10px;
+    color: #704214;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+    z-index: 10;
+}
+
+/* Form Section */
+.form-section {
+    flex: 0 0 55%;
+    border-left: 1px dashed #9c7a4d;
+    padding-left: 50px;
+}
+
+.form-header {
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    background: #f8f3e3;
+    padding: 20px;
+    border: 1px solid #9c7a4d;
+    max-width: 90%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Special Elite', cursive;
+    color: #704214;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    background: #fffdf7;
+    border: 1px solid #9c7a4d;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    font-family: 'Old Standard TT', serif;
+    font-size: 1rem;
+    color: #2b2b2b;
+}
+
+input:focus {
+    outline: none;
+    border-color: #704214;
+}
+
+button {
+    background: #704214;
+    color: #f8f3e3;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    font-family: 'Special Elite', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    background: #9c7a4d;
+}
+
+.switch-form {
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.switch-form a {
+    color: #704214;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dashed;
+}
+
+.switch-form a:hover {
+    color: #9c7a4d;
+}
+
+/* Quote styling */
+.quote {
+    font-style: italic;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.1rem;
+    color: #704214;
+    position: relative;
+    padding: 0 30px;
+}
+
+.quote::before, .quote::after {
+    content: """;
+    position: absolute;
+    font-size: 2rem;
+    font-family: 'Abril Fatface', cursive;
+    color: #9c7a4d;
+    opacity: 0.5;
+}
+
+.quote::before {
+    left: 0;
+    top: -10px;
+}
+
+.quote::after {
+    right: 0;
+    bottom: -20px;
+    content: """;
+}
+
+
+}
