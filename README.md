@@ -1,6 +1,7 @@
 # MixItUp
 
-Project Structure
+## Project Structure
+```plaintext
 mixtape-app/
 ├── frontend/
 │   ├── index.html                  # Landing page / Home screen
@@ -40,3 +41,4 @@ mixtape-app/
 │
 ├── .gitignore
 └── README.md
+```
