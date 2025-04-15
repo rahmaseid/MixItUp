@@ -4,10 +4,7 @@
 ```plaintext
 mixtape-app/
 ├── frontend/
-│   ├── index.html                  # Landing page / Home screen
-│   ├── login.html                  # User login form
-│   ├── register.html               # User signup form
-│   ├── mixtape.html                # Main mixtape builder/player UI
+│   ├── Mixtape.html                # Main mixtape builder/player UI
 │   ├── assets/
 │   │   ├── style.css               # All styling, including theme switcher
 │   │   ├── script.js               # JS for UI interactions
