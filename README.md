@@ -29,7 +29,7 @@ mixtape-app/
 │       └── helpers.php             # Common helper functions
 │
 ├── sql/
-│   ├── createTables.sql                  # Database structure (users, playlists, songs)
+│   ├── createTables.sql            # Database structure (users, playlists, songs)
 │   └── seed.sql                    # Optional sample data
 │
 ├── report/
