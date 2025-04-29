@@ -21,7 +21,6 @@ mixtape-app/
 │   ├── mixtape/
 │   │   ├── create_playlist.php     # Save playlist to DB
 │   │   ├── get_playlists.php       # Fetch past playlists for user
-│   │   ├── download_playlist.php   # Allow playlist ZIP download
 │   │   └── update_title.php        # Edit playlist title
 │
 │   └── includes/
