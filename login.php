@@ -1,44 +1,35 @@
 <?php
-    $host = 'localhost';
-    $dbname = 'mixtape_db';
-    $username = 'root';
-    $password = '';
+session_start();
+require_once '../includes/db.php';
 
-    // Connect to database
-    $conn = new mysqli($host, $username, $password, $dbname);
+header('Content-Type: application/json');
 
-    // Check connection
-    if($conn->connect_error) 
-    {
-        die(json_encode(['success' => false, 'message' => 'Database connection failed.']));
+// Get JSON input
+$data = json_decode(file_get_contents("php://input"), true);
+
+$email = trim($data['email']);
+$password = $data['password'];
+
+if (!$email || !$password) {
+    echo json_encode(['success' => false, 'message' => 'Email and password are required.']);
+    exit;
+}
+
+try {
+    //prepare and bind
+    $stmt = $conn->prepare("SELECT user_id, name, password FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    $user = $stmt->fetch();
+
+    if ($user && password_verify($password, $user['password'])) {
+        //Save user session
+        $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['name'] = $user['name'];
+
+        echo json_encode(['success' => true, 'message' => 'Login successful.', 'name' => $user['name']]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Invalid email or password.']);
     }
-
-    // Get JSON input
-    $data = json_decode(file_get_contents("php://input"), true);
-
-    $email = $conn->real_escape_string($data['email']);
-    $password_input = $data['password'];
-
-    // Check user
-    $sql = "SELECT id, name, password FROM users WHERE email = '$email'";
-    $result = $conn->query($sql);
-
-    if($result->num_rows === 1) 
-    {
-        $user = $result->fetch_assoc();
-        if(password_verify($password_input, $user['password'])) 
-        {
-            echo json_encode(['success' => true, 'message' => 'Login successful.', 'name' => $user['name']]);
-        } 
-        else 
-        {
-            echo json_encode(['success' => false, 'message' => 'Incorrect password.']);
-        }
-    } 
-    else 
-    {
-        echo json_encode(['success' => false, 'message' => 'Email not found.']);
-    }
-
-    $conn->close();
-?>
+} catch (PDOException $e) {
+    echo json_encode(['success' => false, 'message' => 'Server error.']);
+}
