@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Playfair Display', cursive;  /* Apply cursive font globally */
 }
 
 body {
@@ -16,16 +17,46 @@ body {
     color: #2b2b2b;
 }
 
+/* Dark mode body styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+/* Utility classes */
 .hidden {
     display: none;
 }
 
+/* Main container */
 .container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 900px;
 }
 
-/* Newspaper Header */
+/* Theme toggle button */
+.theme-btn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #704214;
+    color: #f8f3e3;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Playfair Display', cursive;
+    z-index: 50;
+    font-size: 0.9rem;
+    width: auto; 
+    min-width: unset; 
+}
+
+.dark-mode .theme-btn {
+    background: #9c7a4d;
+}
+
+/* Newspaper Header - Main title section */
 .newspaper-header {
     text-align: center;
     border-bottom: 3px double #704214;
@@ -33,6 +64,11 @@ body {
     padding-bottom: 10px;
 }
 
+.dark-mode .newspaper-header {
+    border-bottom-color: #9c7a4d;
+}
+
+/* Main title styling */
 .newspaper-title {
     font-family: 'Abril Fatface', cursive;
     font-size: 4rem;
@@ -43,12 +79,11 @@ body {
     text-transform: uppercase;
 }
 
-.newspaper-date {
-    font-style: italic;
-    margin: 5px 0;
-    font-size: 0.9rem;
+.dark-mode .newspaper-title {
+    color: #9c7a4d;
 }
 
+/* Subtitle styling */
 .newspaper-subtitle {
     font-size: 1.2rem;
     font-style: italic;
@@ -59,7 +94,11 @@ body {
     max-width: 80%;
 }
 
-/* Content Area */
+.dark-mode .newspaper-subtitle {
+    border-color: #9c7a4d;
+}
+
+/* Main content area - Holds login/signup forms */
 .content-area {
     display: flex;
     gap: 20px;
@@ -69,31 +108,67 @@ body {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Radio Section */
+.dark-mode .content-area {
+    background-color: #2d2d2d;
+    border-color: #5a4a30;
+}
+
+/* Radio styles - Left side of login page */
 .radio-section {
     flex: 0 0 45%;
-     margin-left: 36px; 
+    margin-left: 36px; 
     margin-right: -10px; 
-
 }
 
+/* Container for radio display */
+.radio-display-container {
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Vintage radio positioning */
 .vintage-radio {
     position: relative;
-    width: 100%;
+    display: 100%;
 }
 
+/* Radio image for login page */
 .radio-image {
-    width: 380px;
-    height: 430px;
     display: block;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    width: 380px;
+    height: 430px;
 }
 
+/* Radio/cassette image for mixtape page */
+.radio2-image {
+    width: 250px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Text display on mixtape cassette */
+.radio2-display {
+    position: absolute;
+    top: 70%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    font-family: 'Playfair Display', cursive;
+    font-size: 0.9rem;
+    padding: 10px;
+    color: #704214;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+    z-index: 10;
+}
+
+/* Text display on login radio */
 .radio-display {
     position: absolute;
     top: 60%;
-    left: 45%;
+    left: 46%;
     transform: translate(-50%, -10%);
     width: 90%;
     text-align: center;
@@ -105,20 +180,44 @@ body {
     z-index: 10;
 }
 
-/* Form Section */
+.dark-mode .radio-display {
+    color: #9c7a4d;
+}
+
+/* Form styles - Right side of login page */
 .form-section {
     flex: 0 0 50%;
     border-left: 1px dashed #9c7a4d;
     padding-left: 50px;
 }
 
+.dark-mode .form-section {
+    border-left-color: #5a4a30;
+}
+
+/* Form header styling */
 .form-header {
     text-align: center;
     font-family: 'Special Elite', cursive;
     margin-bottom: 20px;
-     margin-top: 30px;
+    margin-top: 30px;
 }
 
+/* Form header title */
+.form-header h2 {
+    font-family: 'Playfair Display', cursive;
+    font-size: 2rem;
+    color: #704214;
+    font-weight: normal;
+}
+
+/* Form header subtitle */
+.form-header p {
+    font-style: italic;
+    color: #704214;
+}
+
+/* Form container styling */
 .form-container {
     background: #f8f3e3;
     padding: 20px;
@@ -126,17 +225,30 @@ body {
     max-width: 90%;
 }
 
-.form-group {
-    margin-bottom: 20px;
+.dark-mode .form-container {
+    background: #2d2d2d;
+    border-color: #5a4a30;
 }
 
+/* Form group - Contains label and input */
+.form-group {
+    margin-bottom: 12px;
+}
+
+/* Form label styling */
 label {
     display: block;
     margin-bottom: 5px;
-    font-family: 'Special Elite', cursive;
+    font-family: 'Playfair Display', cursive;
+    font-style: italic;
     color: #704214;
 }
 
+.dark-mode label {
+    color: #9c7a4d;
+}
+
+/* Input field styling */
 input {
     width: 100%;
     padding: 10px;
@@ -148,27 +260,40 @@ input {
     color: #2b2b2b;
 }
 
-input:focus {
-    outline: none;
-    border-color: #704214;
+.dark-mode input {
+    background: #3d3d3d;
+    border-color: #5a4a30;
+    color: #e0e0e0;
 }
 
+/* Button styling */
 button {
     background: #704214;
     color: #f8f3e3;
     border: none;
     padding: 12px 20px;
     width: 100%;
-    font-family: 'Special Elite', cursive;
+    font-family: 'Playfair Display', cursive;
+    font-style: italic;
     font-size: 1rem;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
+.dark-mode button {
+    background: #9c7a4d;
+}
+
+/* Button hover effect */
 button:hover {
     background: #9c7a4d;
 }
 
+.dark-mode button:hover {
+    background: #8a6a3d;
+}
+
+/* Form switch link (login/signup toggle) */
 .switch-form {
     margin-top: 20px;
     text-align: center;
@@ -180,42 +305,244 @@ button:hover {
     text-decoration: none;
     font-weight: bold;
     border-bottom: 1px dashed;
+    font-family: 'Playfair Display', cursive;
 }
 
-.switch-form a:hover {
+.dark-mode .switch-form a {
     color: #9c7a4d;
 }
 
-/* Quote styling */
+/* Quote styling  */
 .quote {
+    font-family: 'Georgia', serif;
     font-style: italic;
-    text-align: left;
+    text-align: center;
     margin: 20px 0;
-    font-size: 1.4rem;
+    font-size: 0.9rem;
     color: #704214;
     position: relative;
-    padding: 0 20px;
+    padding: 20px 0;
 }
 
-.quote::before, .quote::after {
-    content: """;
-    position: absolute;
-    font-size: 2rem;
-    font-family: 'Abril Fatface', cursive;
+.dark-mode .quote {
     color: #9c7a4d;
-    opacity: 0.5;
+    border-color: #5a4a30;
 }
 
-.quote::before {
-    left: 0;
-    top: -10px;
+/* Mixtape Creation View - Second page */
+#mixtape-view {
+    width: 100%;
+    max-width: 700px;
 }
 
-.quote::after {
-    right: 0;
-    bottom: -20px;
-    content: """;
+/* Main container for mixtape creation */
+.mixtape-container {
+    background-color: #fffdf7;
+    border: 1px solid #9c7a4d;
+    padding: 15px;
+    margin: 0 auto;
+    max-width: 700px;
 }
 
-
+/* Mixtape page header */
+.mixtape-header {
+    text-align: center;
+    margin-bottom: 10px;
 }
+
+.mixtape-header h2 {
+    font-family: 'Playfair Display', cursive;
+    font-size: 1.2rem;
+    color: #704214;
+    font-weight: normal;
+}
+
+.mixtape-header p {
+    font-style: italic;
+    color: #704214;
+}
+
+/* Quote styling specific to mixtape view */
+#mixtape-view .quote {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: #704214;
+    padding: 5px 0;
+    align-self: flex-end;
+    width: 100%;
+    border-top: 1px solid #9c7a4d;
+    margin-top: 20px;
+}
+
+/* Main content area for mixtape creation form */
+.mixtape-content {
+    background-color: #fffdf7;
+    padding: 6px;
+    border: 1px solid #9c7a4d;
+    margin-top: 10px;
+}
+
+/* Divider for mixtape sections */
+.mixtape-divider {
+    border-bottom: 1px solid #9c7a4d;
+    margin: 20px 0;
+}
+
+.dark-mode .mixtape-form {
+    background: #2d2d2d;
+}
+
+/* Mixtape title styling */
+.mixtape-title {
+    font-family: 'Playfair Display', cursive;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #704214;
+}
+
+/* Layout for mixtape columns */
+.mixtape-columns {
+    display: flex;
+    width: 100%;
+}
+
+/* Left column - Contains form elements */
+.left-column {
+    flex: 0 0 60%;
+    padding-right: 20px;
+}
+
+/* Right column - For additional content */
+.right-column {
+    flex: 0 0 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Primary button styling */
+.btn-primary {
+    background: #704214;
+    width: 100%;
+}
+
+/* Secondary button styling */
+.btn-secondary {
+    background: #9c7a4d;
+    width: auto;
+    padding: 6px 10px;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Small button variant */
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+/* Tracks Section - For YouTube links */
+.tracks-container {
+    margin-top: 10px;
+}
+
+/* Individual track item */
+.track-item {
+    display: flex;
+    align-items: center;
+    background: #f8f3e3;
+    border: 1px dashed #9c7a4d;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    gap: 10px;
+}
+
+.dark-mode .track-item {
+    background: #3d3d3d;
+    border-color: #5a4a30;
+}
+
+/* Track number circle */
+.track-number {
+    background: #704214;
+    color: #f8f3e3;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', cursive;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* Container for track input */
+.track-input-container {
+    flex-grow: 1;
+}
+
+/* YouTube link input styling */
+.youtube-link {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d4c9b8;
+    background: #fffdf7;
+    font-family: 'Abril Fatface', cursive;
+}
+
+.dark-mode .youtube-link {
+    background: #3d3d3d;
+    border-color: #5a4a30;
+    color: #e0e0e0;
+}
+
+/* Remove track button */
+.remove-track {
+    background: transparent;
+    color: #704214;
+    border: none;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.dark-mode .remove-track {
+    color: #e0e0e0;
+}
+
+/* Remove track button hover */
+.remove-track:hover {
+    color: #9c7a4d;
+}
+
+.dark-mode .remove-track:hover {
+    color: #d4c9b8;
+}
+
+/* Action buttons row */
+.actions-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Dark mode styles for create mixtape button */
+.dark-mode .create-mixtape-btn {
+    background: #9c7a4d;
+}
+
+/* Dark mode styles for divider */
+.dark-mode .divider {
+    border-color: #5a4a30;
+}
+
