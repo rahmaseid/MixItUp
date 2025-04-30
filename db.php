@@ -1,7 +1,7 @@
 <?php
 // db.php - Database connection
 
-$host = 'localhost:3308';
+$host = '127.0.0.1:3308';
 $db   = 'mixtape_db';        // Replace with your database name
 $user = 'root';              // Replace with your DB username
 $pass = '';                  // Replace with your DB password

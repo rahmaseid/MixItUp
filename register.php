@@ -2,6 +2,10 @@
 session_start();
 require_once '../includes/db.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 header('Content-Type: application/json');
 
 // Get JSON input
@@ -11,7 +15,7 @@ $name = trim($data['name']);
 $email = trim($data['email']);
 $password = $data['password'];
 
-if (!$name || $email || !$password) {
+if (!$name || !$email || !$password) {
     echo json_encode(['success' => false, 'message' => 'Please fill in all fields.']);
     exit;
 }
@@ -33,6 +37,13 @@ try {
     $stmt->execute([$name, $email, $hashed_password]);
 
     echo json_encode(['success' => true, 'message' => 'Registeration successful.']);
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Server error.']);
+}
+//catch (PDOException $e) {
+//  echo json_encode(['success' => false, 'message' => 'Server error.']);
+//}
+catch (PDOException $e) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Server error: ' . $e->getMessage()
+    ]);
 }

@@ -121,26 +121,85 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         isProcessing = true;
         document.getElementById('radio-message').textContent = "LOGGING IN...";
-        
-        // Simulate login process with timeout
-        setTimeout(() => { 
-            switchToMixtapeView();
+    
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+    
+        fetch('http://localhost/4410-final/backend/auth/login.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        })
+        .then(res => {
+            console.log('Status:', res.status);
+            console.log('Content-Type:', res.headers.get('Content-Type'));
+            return res.text();
+        })
+        .then(text => {
+            console.log('RAW RESPONSE:', text);
+            let data;
+            try {
+              data = JSON.parse(text);
+            } catch (e) {
+              console.error('JSON parse failed:', e);
+              return;
+            }
+            if (data.success) {
+              switchToMixtapeView();
+            } else {
+              alert(data.message || 'Login failed.');
+            }
             isProcessing = false;
-        }, 1000);
+        })
+        .catch(() => {
+            alert('Something went wrong during login.');
+            isProcessing = false;
+        });
     });
+    
     
     // Handle signup form submission
     document.getElementById('signup-form').addEventListener('submit', function(e) {
         e.preventDefault();
         isProcessing = true;
         document.getElementById('radio-message').textContent = "CREATING ACCOUNT...";
-        
-        // Simulate account creation with timeout
-        setTimeout(() => { 
-            switchToMixtapeView();
-            isProcessing = false;
-        }, 1000);
+    
+        const name = document.getElementById('signup-name').value.trim();
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value;
+    
+        fetch('http://localhost/4410-final/backend/auth/register.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password })
+          })
+          .then(res => {
+            console.log('Status:', res.status);
+            console.log('Content-Type:', res.headers.get('Content-Type'));
+            return res.text();
+          })
+          .then(text => {
+            console.log('RAW RESPONSE:', text);
+            let data;
+            try {
+              data = JSON.parse(text);
+            } catch (e) {
+              console.error('JSON parse failed:', e);
+              return;
+            }
+            if (data.success) {
+              switchToMixtapeView();
+            } else {
+              alert(data.message);
+            }
+          })
+          .catch(err => {
+            console.error('Network error:', err);
+            alert('Something went wrong during signup.');
+          });
+          
     });
+    
 
     // Get references to mixtape view elements
     const mixtapeTitle = document.getElementById('mixtape-title');
