@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <title>mixtape | login</title>
-   
-   
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Abril+Fatface&family=Old+Standard+TT:wght@400;700&display=swap"/>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    
-
-    <div class="container">
+    <!-- Login/Signup View -->
+    <div class="container" id="login-view">
         <div class="newspaper-header">
             <h1 class="newspaper-title">Make a Mixtape</h1>
             <div class="newspaper-subtitle">Music for every moment, memories for a lifetime</div>
@@ -20,7 +16,6 @@
         <div class="content-area">
             <div class="radio-section">
                 <div class="vintage-radio">
-                    <!-- Replace this with the path to your saved PNG/SVG file -->
                     <img src="vintage_radio.png" alt="Vintage Radio" class="radio-image">
                     <div class="radio-display" id="radio-message">CREATE YOUR MIXTAPE</div>
                 </div>
@@ -84,6 +79,61 @@
             </div>
         </div>
     </div>
+
+    <!-- Mixtape Creation View -->
+<div id="mixtape-view" class="hidden">
+    <div class="container">
+        <div class="newspaper-header">
+            <h1 class="newspaper-title">Make a Mixtape</h1>
+            <div class="newspaper-subtitle">Music for every moment, memories for a lifetime</div>
+        </div>
+        
+        <div class="mixtape-container">
+            <div class="mixtape-header">
+                <h2>Create Your Mixtape</h2>
+                <p>Add your favorite YouTube tracks and create something special</p>
+            </div>
+
+            <div class="radio-display-container">
+                <div class="vintage-radio">
+                    <img src="radio.png" alt="Vintage Radio" class="radio2-image">
+                    <div class="radio2-display" id="tape-title">Your Mixtape Title</div>
+                </div>
+            </div>
+
+            <div class="mixtape-content">
+                <div class="form-group">
+                    <label for="mixtape-title">Mixtape Title</label>
+                    <input type="text" id="mixtape-title" placeholder="Give your mixtape a name..." maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label>Tracks (Up to 10)</label>
+                    <div class="tracks-container" id="tracks-container">
+                        <div class="track-item">
+                            <div class="track-number">1</div>
+                            <div class="track-input-container">
+                                <input type="text" class="youtube-link" placeholder="Paste YouTube link here...">
+                            </div>
+                            <button class="remove-track" title="Remove this track">✕</button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-track" class="btn-secondary btn-small">+ Add Another Track</button>
+                </div>
+
+                <div class="actions-row">
+                    <button type="button" id="create-mixtape" class="btn-primary">Create My Mixtape</button>
+                </div>
+                
+                <div class="mixtape-divider"></div>
+                
+                <div class="quote">
+                    "Music is the soundtrack of your life." - Dick Clark
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <script src="script.js"></script>
 </body>
