@@ -3,7 +3,7 @@
 <head>
     <title>mixtape | login</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Abril+Fatface&family=Old+Standard+TT:wght@400;700&display=swap"/>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="assets/style.css"/>
 </head>
 <body>
     <!-- Login/Signup View -->
@@ -16,7 +16,7 @@
         <div class="content-area">
             <div class="radio-section">
                 <div class="vintage-radio">
-                    <img src="vintage_radio.png" alt="Vintage Radio" class="radio-image">
+                    <img src="assets/vintage_radio.png" alt="Vintage Radio" class="radio-image">
                     <div class="radio-display" id="radio-message">CREATE YOUR MIXTAPE</div>
                 </div>
                 <div class="quote">
@@ -32,14 +32,14 @@
                     </div>
                     
                     <div class="form-container">
-                        <form id="login-form">
+                        <form id="login-form" action="../backend/auth/login.php" method="POST">
                             <div class="form-group">
                                 <label for="login-email">Email</label>
-                                <input type="email" id="login-email" required placeholder="your@email.com">
+                                <input type="email" name="email" id="login-email" required placeholder="your@email.com">
                             </div>
                             <div class="form-group">
                                 <label for="login-password">Password</label>
-                                <input type="password" id="login-password" required placeholder="••••••••">
+                                <input type="password" name="password" id="login-password" required placeholder="••••••••">
                             </div>
                             <button type="submit">Login</button>
                         </form>
@@ -56,18 +56,18 @@
                     </div>
                     
                     <div class="form-container">
-                        <form id="signup-form">
+                        <form id="signup-form" action="../backend/auth/register.php" method="POST">
                             <div class="form-group">
                                 <label for="signup-name">Name</label>
-                                <input type="text" id="signup-name" required placeholder="Your name">
+                                <input type="text" name="name" id="signup-name" required placeholder="Your name">
                             </div>
                             <div class="form-group">
                                 <label for="signup-email">Email</label>
-                                <input type="email" id="signup-email" required placeholder="your@email.com">
+                                <input type="email" name="email" id="signup-email" required placeholder="your@email.com">
                             </div>
                             <div class="form-group">
                                 <label for="signup-password">Password</label>
-                                <input type="password" id="signup-password" required placeholder="••••••••">
+                                <input type="password" name="password" id="signup-password" required placeholder="••••••••">
                             </div>
                             <button type="submit">Sign Up</button>
                         </form>
@@ -96,7 +96,7 @@
 
             <div class="radio-display-container">
                 <div class="vintage-radio">
-                    <img src="radio.png" alt="Vintage Radio" class="radio2-image">
+                    <img src="assets/radio.png" alt="Vintage Radio" class="radio2-image">
                     <div class="radio2-display" id="tape-title">Your Mixtape Title</div>
                 </div>
             </div>
@@ -135,6 +135,6 @@
     </div>
 </div>
 
-    <script src="script.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 </html>

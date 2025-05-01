@@ -122,84 +122,67 @@ document.addEventListener('DOMContentLoaded', () => {
         isProcessing = true;
         document.getElementById('radio-message').textContent = "LOGGING IN...";
     
-        const email = document.getElementById('login-email').value.trim();
-        const password = document.getElementById('login-password').value;
+        const formData = new FormData(document.getElementById('login-form'));
     
-        fetch('http://localhost/4410-final/backend/auth/login.php', {
+        fetch('../backend/auth/login.php', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
+            body: formData
         })
-        .then(res => {
-            console.log('Status:', res.status);
-            console.log('Content-Type:', res.headers.get('Content-Type'));
-            return res.text();
-        })
-        .then(text => {
-            console.log('RAW RESPONSE:', text);
-            let data;
-            try {
-              data = JSON.parse(text);
-            } catch (e) {
-              console.error('JSON parse failed:', e);
-              return;
-            }
-            if (data.success) {
-              switchToMixtapeView();
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                document.getElementById('radio-message').textContent = "Login successful!";
+                switchToMixtapeView();
             } else {
-              alert(data.message || 'Login failed.');
+                document.getElementById('radio-message').textContent = data.message || "Login failed.";
             }
-            isProcessing = false;
         })
-        .catch(() => {
-            alert('Something went wrong during login.');
+        .catch(error => {
+            console.error("Login error:", error);
+            document.getElementById('radio-message').textContent = "Server error.";
+        })
+        .finally(() => {
             isProcessing = false;
         });
     });
-    
     
     // Handle signup form submission
     document.getElementById('signup-form').addEventListener('submit', function(e) {
         e.preventDefault();
         isProcessing = true;
         document.getElementById('radio-message').textContent = "CREATING ACCOUNT...";
-    
-        const name = document.getElementById('signup-name').value.trim();
-        const email = document.getElementById('signup-email').value.trim();
-        const password = document.getElementById('signup-password').value;
-    
-        fetch('http://localhost/4410-final/backend/auth/register.php', {
+        
+        const formData = new FormData(document.getElementById('signup-form'));
+
+        fetch('../backend/auth/register.php', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, password })
-          })
-          .then(res => {
-            console.log('Status:', res.status);
-            console.log('Content-Type:', res.headers.get('Content-Type'));
-            return res.text();
-          })
-          .then(text => {
-            console.log('RAW RESPONSE:', text);
-            let data;
+            body: formData
+        })
+        .then(response => response.text()) // use .text() to debug first
+        .then(text => {
+            console.log('Raw response:', text); // Log raw response for debugging
             try {
-              data = JSON.parse(text);
+                const data = JSON.parse(text);
+                if (data.status === 'success') {
+                    document.getElementById('radio-message').textContent = "Registered successfully!";
+                    switchToMixtapeView();
+                } else {
+                    document.getElementById('radio-message').textContent = data.message || "Registration failed.";
+                }
             } catch (e) {
-              console.error('JSON parse failed:', e);
-              return;
+                console.error("JSON parse error:", e);
+                console.error("Raw response:", text);
+                document.getElementById('radio-message').textContent = "Server error.";
             }
-            if (data.success) {
-              switchToMixtapeView();
-            } else {
-              alert(data.message);
-            }
-          })
-          .catch(err => {
-            console.error('Network error:', err);
-            alert('Something went wrong during signup.');
-          });
-          
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+            document.getElementById('radio-message').textContent = "Network error.";
+        })
+        .finally(() => {
+            isProcessing = false;
+        });        
     });
-    
 
     // Get references to mixtape view elements
     const mixtapeTitle = document.getElementById('mixtape-title');
