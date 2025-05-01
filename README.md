@@ -19,6 +19,7 @@ mixtape-app/
 │   │   └── session_check.php       # Protects private pages
 │
 │   ├── mixtape/
+│   │   ├── video_info.php          # Retrieves YouTube video metadata
 │   │   ├── create_playlist.php     # Save playlist to DB
 │   │   ├── get_playlists.php       # Fetch past playlists for user
 │   │   └── update_title.php        # Edit playlist title
