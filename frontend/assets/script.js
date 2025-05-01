@@ -66,6 +66,28 @@ function switchToMixtapeView() {
     clearInterval(messageInterval);
 }
 
+
+// Switch back to login view
+function switchToLoginView() {
+    document.getElementById('mixtape-view').classList.add('hidden');
+    document.getElementById('login-view').classList.remove('hidden');
+    
+    // Reset login form
+    document.getElementById('login-form').reset();
+    
+    // Show login container, hide signup container
+    document.getElementById('login-container').classList.remove('hidden');
+    document.getElementById('signup-container').classList.add('hidden');
+    
+    // Restart message cycling
+    startMessageCycle();
+    
+    // Show welcome back message
+    isProcessing = true;
+    document.getElementById('radio-message').textContent = "WELCOME BACK";
+    setTimeout(() => { isProcessing = false; }, 2000);
+}
+
 // Update track numbers when tracks are added/removed
 function updateTrackNumbers() {
     const tracksContainer = document.getElementById('tracks-container');
@@ -85,6 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Start radio message cycle
     startMessageCycle();
+    // Set up logout button functionality
+const logoutBtn = document.getElementById('logout-btn');
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        switchToLoginView();
+    });
+}
 
     // Form toggling functionality - Switch to signup form
     document.getElementById('show-signup').addEventListener('click', function(e) {
