@@ -1,39 +1,37 @@
 <?php
 session_start();
 require_once '../includes/db.php';
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 header('Content-Type: application/json');
 
-// Get JSON input
+// Parse JSON body
 $data = json_decode(file_get_contents("php://input"), true);
+$email = trim($data['email']    ?? '');
+$password = $data['password'] ?? '';
 
-$email = trim($data['email']);
-$password = $data['password'];
 
 if (!$email || !$password) {
     echo json_encode(['success' => false, 'message' => 'Email and password are required.']);
     exit;
 }
 
-try {
-    //prepare and bind
-    $stmt = $conn->prepare("SELECT user_id, name, password FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
+$stmt = $conn->prepare("SELECT user_id, name, password FROM users WHERE email = ?");
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$result = $stmt->get_result();
+$user   = $result->fetch_assoc();
+$stmt->close();
 
-    if ($user && password_verify($password, $user['password'])) {
-        //Save user session
-        $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['name'] = $user['name'];
 
-        echo json_encode(['success' => true, 'message' => 'Login successful.', 'name' => $user['name']]);
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Invalid email or password.']);
-    }
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Server error.']);
+if ($user && password_verify($password, $user['password'])) {
+    $_SESSION['user_id'] = $user['user_id'];
+    $_SESSION['name']    = $user['name'];
+    echo json_encode([
+        'success' => true,
+        'message' => 'Login successful.',
+        'name'    => $user['name']
+    ]);
+} else {
+    echo json_encode(['success' => false, 'message' => 'Invalid email or password.']);
 }
+
+$conn->close();

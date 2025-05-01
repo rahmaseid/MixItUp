@@ -1,24 +1,15 @@
 <?php
-// db.php - Database connection
+// db.php - Database connection using mysqli
 
-$host = '127.0.0.1:3308';
-$db   = 'mixtape_db';        // Replace with your database name
-$user = 'root';              // Replace with your DB username
-$pass = '';                  // Replace with your DB password
-$charset = 'utf8mb4';
+$host = '127.0.0.1';
+$port = 3308;
+$user = 'root';
+$pass = '';
+$db   = 'mixtape_db';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
-// Set PDO error mode and fetch mode
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-try {
-    $conn = new PDO($dsn, $user, $pass, $options);
-} catch (PDOException $e) {
-    // Show generic error in production, detailed in dev
-    die("Database connection failed: " . $e->getMessage());
+$conn = new mysqli($host, $user, $pass, $db, $port);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+// Make sure we use utf8mb4 everywhere
+$conn->set_charset('utf8mb4');

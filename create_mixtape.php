@@ -26,26 +26,29 @@ if (empty($songs) || !is_array($songs)) {
 }
 
 try {
-    //start transaction
-    $conn->beginTransaction();
-
-    //Insert playlist into database
+    // Insert playlist
     $stmt = $conn->prepare("INSERT INTO playlists (user_id, title) VALUES (?, ?)");
-    $stmt->execute([$user_id, $title]);
-    $playlist_id = $conn->lastInsertId();
+    $stmt->bind_param('is', $user_id, $title);
+    $stmt->execute();
+    $playlist_id = $conn->insert_id;
+    $stmt->close();
 
-    //Insert songs into playlist_songs
-    $position = 1;
+    // Insert songs in order
     $stmt = $conn->prepare("INSERT INTO playlist_songs (playlist_id, song_id, position) VALUES (?, ?, ?)");
+    $position = 1;
     foreach ($songs as $song_id) {
-        $stmt->execute([$playlist_id, $song_id, $position]);
+        $stmt->bind_param('iii', $playlist_id, $song_id, $position);
+        $stmt->execute();
         $position++;
     }
+    $stmt->close();
 
     $conn->commit();
-    echo json_encode(["success" => true, "playlist_id" => $playlist_id]);
-} catch (PDOException $e) {
-    $conn->rollBack();
+    echo json_encode(['success' => true, 'playlist_id' => $playlist_id]);
+} catch (Exception $e) {
+    $conn->rollback();
     http_response_code(500);
-    echo json_encode(["error" => "Failed to create playlist. " . $e->getMessage()]);
+    echo json_encode(['error' => 'Failed to create playlist. ' . $e->getMessage()]);
 }
+
+$conn->close();

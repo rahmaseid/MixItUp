@@ -20,30 +20,31 @@ if (!$name || !$email || !$password) {
     exit;
 }
 
-try {
-    //Check if email already exists
-    $stmt = $conn->prepare("SELECT user_id FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-
-    if ($stmt->fetch()) {
-        echo json_encode(['success' => false, 'message' => 'Email is already registered.']);
-        exit;
-    }
-
-    //Hash and insert user info
-
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-    $stmt->execute([$name, $email, $hashed_password]);
-
-    echo json_encode(['success' => true, 'message' => 'Registeration successful.']);
+// Check if email already exists
+$stmt = $conn->prepare("SELECT user_id FROM users WHERE email = ?");
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$stmt->store_result();
+if ($stmt->num_rows > 0) {
+    echo json_encode(['success' => false, 'message' => 'Email is already registered.']);
+    $stmt->close();
+    $conn->close();
+    exit;
 }
-//catch (PDOException $e) {
-//  echo json_encode(['success' => false, 'message' => 'Server error.']);
-//}
-catch (PDOException $e) {
+$stmt->close();
+
+//Hash and insert user info
+
+$hashed = password_hash($password, PASSWORD_DEFAULT);
+$stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+$stmt->bind_param('sss', $name, $email, $hashed);
+if ($stmt->execute()) {
+    echo json_encode(['success' => true, 'message' => 'Registeration successful.']);
+} else {
     echo json_encode([
         'success' => false,
         'message' => 'Server error: ' . $e->getMessage()
     ]);
 }
+$stmt->close();
+$conn->close();
