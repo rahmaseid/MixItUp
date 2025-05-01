@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('login-email').value.trim();
         const password = document.getElementById('login-password').value;
     
-        fetch('http://localhost/4410-final/backend/auth/login.php', {
+        fetch('../backend/auth/login.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('signup-email').value.trim();
         const password = document.getElementById('signup-password').value;
     
-        fetch('http://localhost/4410-final/backend/auth/register.php', {
+        fetch('../backend/auth/register.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password })
