@@ -52,10 +52,35 @@ body.dark-mode {
     min-width: unset; 
 }
 
+.logout-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: #704214;
+    color: #f8f3e3;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: 'Playfair Display', cursive;
+    font-style: italic;
+    font-size: 0.9rem;
+    width: auto;
+    min-width: unset;
+}
 .dark-mode .theme-btn {
     background: #9c7a4d;
 }
+.dark-mode .logout-btn {
+    background: #9c7a4d;
+}
+.logout-btn:hover {
+    background: #9c7a4d;
+}
 
+.dark-mode .logout-btn:hover {
+    background: #8a6a3d;
+}
 /* Newspaper Header - Main title section */
 .newspaper-header {
     text-align: center;
@@ -343,7 +368,10 @@ button:hover {
     margin: 0 auto;
     max-width: 700px;
 }
-
+.dark-mode .mixtape-container{
+    background: #2d2d2d; 
+    border-color: #5a4a30;
+}
 /* Mixtape page header */
 .mixtape-header {
     text-align: center;
@@ -384,7 +412,10 @@ button:hover {
     border: 1px solid #9c7a4d;
     margin-top: 10px;
 }
-
+.dark-mode .mixtape-content{
+    background: #2d2d2d; 
+    border-color: #5a4a30;
+}
 /* Divider for mixtape sections */
 .mixtape-divider {
     border-bottom: 1px solid #9c7a4d;
