@@ -8,8 +8,13 @@ mixtape-app/
 │   ├── assets/
 │   │   ├── style.css               # All styling, including theme switcher
 │   │   ├── script.js               # JS for UI interactions
-│   │   └── images/
-│   │       └── vintage_radio.png   # Assets (tape images, icons, etc.)
+│   │   ├── fastforward.png
+│   │   ├── pause.png
+│   │   ├── play.png
+│   │   ├── radio.png
+│   │   ├── remove.png
+│   │   ├── rewind.png
+│   │   ├── vintage_radio.png
 │
 ├── backend/
 │   ├── auth/
@@ -50,7 +55,7 @@ mixtape-app/
 
   ### 2. Launch XAAMP
     - Open the XAMPP Control Panel
-    - Start the the following servers:
+    - Start the following servers:
       - Apache
       - MySQL
 
