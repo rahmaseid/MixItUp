@@ -1,0 +1,918 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', cursive;  /* Apply cursive font globally */
+}
+
+body {
+    font-family: 'Old Standard TT', serif;
+    background-color: #f8f3e3;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #2b2b2b;
+}
+
+/* Dark mode body styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+/* Main container */
+.container {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Theme toggle button */
+.theme-btn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #704214;
+    color: #f8f3e3;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Playfair Display', cursive;
+    z-index: 50;
+    font-size: 0.9rem;
+    width: auto; 
+    min-width: unset; 
+}
+
+.logout-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: #704214;
+    color: #f8f3e3;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: 'Playfair Display', cursive;
+    font-style: italic;
+    font-size: 0.9rem;
+    width: auto;
+    min-width: unset;
+    
+}
+.dark-mode .theme-btn {
+    background: #9c7a4d;
+}
+.dark-mode .logout-btn {
+    background: #9c7a4d;
+}
+.logout-btn:hover {
+    background: #9c7a4d;
+}
+
+.dark-mode .logout-btn:hover {
+    background: #8a6a3d;
+}
+/* Newspaper Header - Main title section */
+.newspaper-header {
+    text-align: center;
+    border-bottom: 3px double #704214;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.dark-mode .newspaper-header {
+    border-bottom-color: #9c7a4d;
+}
+
+/* Main title styling */
+.newspaper-title {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 4rem;
+    letter-spacing: -1px;
+    color: #704214;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.dark-mode .newspaper-title {
+    color: #9c7a4d;
+}
+
+/* Subtitle styling */
+.newspaper-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    border-top: 1px solid #704214;
+    border-bottom: 1px solid #704214;
+    padding: 5px 0;
+    margin: 10px auto;
+    max-width: 80%;
+}
+
+.dark-mode .newspaper-subtitle {
+    border-color: #9c7a4d;
+}
+
+/* Main content area - Holds login/signup forms */
+.content-area {
+    display: flex;
+    gap: 20px;
+    background-color: #f8f3e3;
+    padding: 10px;
+    border: 1px solid #9c7a4d;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .content-area {
+    background-color: #2d2d2d;
+    border-color: #5a4a30;
+}
+
+/* Radio styles - Left side of login page */
+.radio-section {
+    flex: 0 0 45%;
+    margin-left: 36px; 
+    margin-right: -10px; 
+}
+
+/* Container for radio display */
+.radio-display-container {
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Vintage radio positioning */
+.vintage-radio {
+    position: relative;
+    display: 100%;
+}
+
+/* Radio image for login page */
+.radio-image {
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    width: 380px;
+    height: 430px;
+}
+
+/* Radio/cassette image for mixtape page */
+.radio2-image {
+    width: 250px;
+    height: auto;
+    margin: 0 auto;
+    margin-left: 40px;
+}
+
+/* Text display on mixtape cassette */
+.radio2-display {
+    position: absolute;
+    top: 69%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    font-family: 'Playfair Display', cursive;
+    font-size: 0.9rem;
+    padding: 10px;
+    color: #704214;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+    z-index: 10;
+}
+
+/* Text display on login radio */
+.radio-display {
+    position: absolute;
+    top: 59%;
+    left: 48%;
+    transform: translate(-50%, -10%);
+    width: 90%;
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.1rem;
+    padding: 10px;
+    color: #704214;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+    z-index: 10;
+}
+
+.dark-mode .radio-display {
+    color: #9c7a4d;
+}
+
+/* Form styles - Right side of login page */
+.form-section {
+    flex: 0 0 50%;
+    border-left: 1px dashed #9c7a4d;
+    padding-left: 50px;
+}
+
+.dark-mode .form-section {
+    border-left-color: #5a4a30;
+}
+
+/* Form header styling */
+.form-header {
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    padding-right: 40px;
+}
+
+/* Form header title */
+.form-header h2 {
+    font-family: 'Playfair Display', cursive;
+    font-size: 2rem;
+    color: #704214;
+    font-weight: normal;
+}
+
+/* Form header subtitle */
+.form-header p {
+    font-style: italic;
+    color: #704214;
+}
+
+/* Form container styling */
+.form-container {
+    background: #f8f3e3;
+    padding: 20px;
+    border: 1px solid #9c7a4d;
+    max-width: 90%;
+}
+
+.dark-mode .form-container {
+    background: #2d2d2d;
+    border-color: #5a4a30;
+}
+
+/* Form group - Contains label and input */
+.form-group {
+    margin-bottom: 12px;
+}
+
+/* Form label styling */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Playfair Display', cursive;
+    font-style: italic;
+    color: #704214;
+}
+
+.dark-mode label {
+    color: #9c7a4d;
+}
+
+/* Input field styling */
+input {
+    width: 100%;
+    padding: 10px;
+    background: #fffdf7;
+    border: 1px solid #9c7a4d;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    font-family: 'Old Standard TT', serif;
+    font-size: 1rem;
+    color: #2b2b2b;
+}
+
+.dark-mode input {
+    background: #3d3d3d;
+    border-color: #5a4a30;
+    color: #e0e0e0;
+}
+
+/* Button styling */
+button {
+    background: #704214;
+    color: #f8f3e3;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    font-family: 'Playfair Display', cursive;
+    font-style: italic;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.dark-mode button {
+    background: #9c7a4d;
+}
+
+/* Button hover effect */
+button:hover {
+    background: #9c7a4d;
+}
+
+.dark-mode button:hover {
+    background: #8a6a3d;
+}
+
+/* Form switch link (login/signup toggle) */
+.switch-form {
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.switch-form a {
+    color: #704214;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dashed;
+    font-family: 'Playfair Display', cursive;
+}
+
+.dark-mode .switch-form a {
+    color: #9c7a4d;
+}
+
+/* Quote styling  */
+.quote {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: #704214;
+    position: relative;
+    padding: 20px 0;
+}
+
+.dark-mode .quote {
+    color: #9c7a4d;
+    border-color: #5a4a30;
+}
+
+/* Mixtape Creation View - Second page */
+#mixtape-view {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Main container for mixtape creation */
+.mixtape-container {
+    background-color: #fffdf7;
+    border: 1px solid #9c7a4d;
+    padding: 15px;
+    margin: 0 auto;
+    max-width: 700px;
+}
+.dark-mode .mixtape-container{
+    background: #2d2d2d; 
+    border-color: #5a4a30;
+}
+/* Mixtape page header */
+.mixtape-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.mixtape-header h2 {
+    font-family: 'Playfair Display', cursive;
+    font-size: 1.2rem;
+    color: #704214;
+    font-weight: normal;
+}
+
+.mixtape-header p {
+    font-style: italic;
+    color: #704214;
+}
+
+/* Quote styling specific to mixtape view */
+#mixtape-view .quote {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: #704214;
+    padding: 5px 0;
+    align-self: flex-end;
+    width: 100%;
+    border-top: 1px solid #9c7a4d;
+    margin-top: 20px;
+}
+
+/* Main content area for mixtape creation form */
+.mixtape-content {
+    background-color: #fffdf7;
+    padding: 6px;
+    border: 1px solid #9c7a4d;
+    margin-top: 10px;
+}
+.dark-mode .mixtape-content{
+    background: #2d2d2d; 
+    border-color: #5a4a30;
+}
+/* Divider for mixtape sections */
+.mixtape-divider {
+    border-bottom: 1px solid #9c7a4d;
+    margin: 20px 0;
+}
+
+.dark-mode .mixtape-form {
+    background: #2d2d2d;
+}
+
+/* Mixtape title styling */
+.mixtape-title {
+    font-family: 'Playfair Display', cursive;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #704214;
+}
+
+/* Layout for mixtape columns */
+.mixtape-columns {
+    display: flex;
+    width: 100%;
+}
+
+/* Left column - Contains form elements */
+.left-column {
+    flex: 0 0 60%;
+    padding-right: 20px;
+}
+
+/* Right column - For additional content */
+.right-column {
+    flex: 0 0 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Primary button styling */
+.btn-primary {
+    background: #704214;
+    width: 100%;
+}
+
+/* Secondary button styling */
+.btn-secondary {
+    background: #9c7a4d;
+    width: auto;
+    padding: 6px 10px;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Small button variant */
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+/* Tracks Section - For YouTube links */
+.tracks-container {
+    margin-top: 10px;
+}
+
+/* Individual track item */
+.track-item {
+    display: flex;
+    align-items: center;
+    background: #f8f3e3;
+    border: 1px dashed #9c7a4d;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    gap: 10px;
+}
+
+.dark-mode .track-item {
+    background: #3d3d3d;
+    border-color: #5a4a30;
+}
+
+/* Track number circle */
+.track-number {
+    background: #704214;
+    color: #f8f3e3;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', cursive;
+    font-weight: bold;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* Container for track input */
+.track-input-container {
+    flex-grow: 1;
+}
+
+/* YouTube link input styling */
+.youtube-link {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d4c9b8;
+    background: #fffdf7;
+    font-family: 'Abril Fatface', cursive;
+}
+
+.dark-mode .youtube-link {
+    background: #3d3d3d;
+    border-color: #5a4a30;
+    color: #e0e0e0;
+}
+
+/* Remove track button */
+.remove-track {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #704214;
+    font-size: 16px;
+
+}
+
+/* Hide remove button on first track */
+.track-item:first-child .remove-track {
+    visibility: hidden;
+}
+
+.remove-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    transition: filter 0.2s ease;
+}
+
+.dark-mode .remove-track {
+    color: #e0e0e0;
+}
+
+/* Remove track button hover */
+.remove-track:hover {
+    color: #9c7a4d;
+}
+
+.dark-mode .remove-track:hover {
+    color: #d4c9b8;
+}
+
+.dark-mode .remove-track {
+    color: #e0e0e0;
+}
+
+/* Remove track button hover */
+.remove-track:hover {
+    color: #9c7a4d;
+}
+
+.dark-mode .remove-track:hover {
+    color: #d4c9b8;
+}
+
+/* Action buttons row */
+.actions-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Dark mode styles for create mixtape button */
+.dark-mode .create-mixtape-btn {
+    background: #9c7a4d;
+}
+
+/* Dark mode styles for divider */
+.dark-mode .divider {
+    border-color: #5a4a30;
+}
+
+/* Playback View Styles */
+.playback-container {
+    background-color: #fffdf7;
+    border: 1px solid #9c7a4d;
+    padding: 25px;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.mixtape-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.mixtape-header h2 {
+    font-family: 'Playfair Display', cursive;
+    font-size: 1.8rem;
+    color: #704214;
+    margin-bottom: 5px;
+}
+
+#creation-date {
+    font-style: italic;
+    color: #9c7a4d;
+    font-size: 0.9rem;
+}
+
+.mixtape-description {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(248, 243, 227, 0.5);
+    border-left: 3px solid #9c7a4d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.player-section {
+    margin: 30px 0;
+}
+
+.progress-container {
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 4px;
+    background: #d4c9b8;
+    border-radius: 2px;
+}
+
+.progress {
+    height: 100%;
+    width: 30%;
+    background: #704214;
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #704214;
+    margin-bottom: 5px;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.player-btn {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.player-btn:hover {
+    background: rgba(112, 66, 20, 0.1);
+}
+
+#play-btn {
+    width: 50px;
+    height: 50px;
+}
+
+.section-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 1px solid #d4c9b8;
+    margin-bottom: 15px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 8px 15px;
+    font-family: 'Old Standard TT', serif;
+    color: #9c7a4d;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: #704214;
+    font-weight: bold;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #704214;
+}
+.tab-btn:hover {
+    color: #704214;
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.section-header h3 {
+    font-family: 'Playfair Display', cursive;
+    color: #704214;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.section-header span {
+    font-size: 0.9rem;
+    color: #9c7a4d;
+    font-style: italic;
+}
+
+.track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgba(248, 243, 227, 0.5);
+    border-radius: 4px;
+}
+
+.track-item.active {
+    background: rgba(112, 66, 20, 0.1);
+    border-left: 3px solid #704214;
+}
+
+.track-info {
+    flex-grow: 1;
+}
+
+.track-title {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.track-artist {
+    font-size: 0.85rem;
+    color: #9c7a4d;
+}
+
+.track-duration {
+    min-width: 40px;
+    text-align: right;
+    font-family: 'Old Standard TT', serif;
+}
+.time-display {
+    font-family: 'Old Standard TT', serif;
+    font-size: 0.9rem;
+}
+.quote {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    text-align: center;
+    margin: 30px 0 20px;
+    padding-top: 20px;
+    border-top: 1px solid #d4c9b8;
+    color: #704214;
+}
+.control-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(25deg) brightness(90%) contrast(90%);
+}
+
+/* Dark mode for playback */
+.dark-mode .playback-container {
+    background-color: #2d2d2d;
+    border-color: #5a4a30;
+}
+
+.dark-mode .mixtape-header h2,
+.dark-mode .player-btn,
+.dark-mode .track-number,
+.dark-mode .track-duration,
+.dark-mode .time-display,
+.dark-mode .section-header h3,
+.dark-mode .quote {
+    color: #d4c9b8;
+}
+
+.dark-mode .mixtape-description,
+.dark-mode .track-item {
+    background: rgba(45, 45, 45, 0.5);
+    border-left-color: #5a4a30;
+}
+
+.dark-mode .progress-bar {
+    background: #5a4a30;
+}
+
+.dark-mode .progress {
+    background: #d4c9b8;
+}
+
+.dark-mode .track-item.active {
+    background: rgba(156, 122, 77, 0.2);
+    border-left-color: #9c7a4d;
+}
+
+.dark-mode .control-icon {
+    filter: brightness(0) saturate(100%) sepia(30%) hue-rotate(25deg) brightness(120%) contrast(90%);
+}
+.dark-mode .tab-btn:not(.active) {
+    color: #d4c9b8; 
+}
+.dark-mode .tab-btn:hover {
+    color: #d4c9b8;
+}
+/* Play/Pause if playing vs if not */
+#play-pause-icon.playing {
+    content: url('assets/pause.png');
+}
+
+#play-pause-icon:not(.playing) {
+    content: url('assets/play.png');
+}
+
+/* Previous Playlists Styles */
+#previous-playlists {
+    margin-top: 20px;
+}
+
+.playlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.playlist-item:hover {
+    background-color: #f5f5f5;
+}
+
+.playlist-info {
+    flex-grow: 1;
+}
+
+.playlist-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.playlist-date {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.load-playlist {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+.empty-message, .error-message {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.error-message {
+    color: #d32f2f;
+}
+
+.hidden {
+    display: none;
+}
