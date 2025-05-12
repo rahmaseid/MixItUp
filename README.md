@@ -21,22 +21,17 @@ mixtape-app/
 │   ├── mixtape/
 │   │   ├── video_info.php          # Retrieves YouTube video metadata
 │   │   ├── create_playlist.php     # Save playlist to DB
-│   │   ├── get_playlists.php       # Fetch past playlists for user
+│   │   ├── get_playlist.php        # Fetches past playlists for user to be played
+│   │   ├── get_playlists.php       # Displays past playlists for user
 │   │   └── update_title.php        # Edit playlist title
 │
 │   └── includes/
-│       ├── db.php                  # Database connection
-│       └── helpers.php             # Common helper functions
+│       └── db.php                  # Database connection
 │
 ├── sql/
-│   ├── createTables.sql            # Database structure (users, playlists, songs)
-│   └── seed.sql                    # Optional sample data
+│   └── createTables.sql            # Database structure (users, playlists, songs)
 │
-├── report/
-│   ├── screenshots/                # UI screenshots for the report
-│   └── final_report.pdf            # Final submitted project report
-│
-├── .gitignore
+├── Final Report (submitted as pdf outside zip file)
 └── README.md
 ```
 
