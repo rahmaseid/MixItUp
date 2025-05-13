@@ -1,0 +1,14 @@
+# ---- API keys & local config ----
+# Ignore the oEmbed/video‐info endpoint that contains your key
+/backend/includes/config.php
+
+/.env
+
+# ---- OS & IDE cruft ----
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+
+# VSCode
+.vscode/
