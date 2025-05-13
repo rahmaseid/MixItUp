@@ -1,6 +1,5 @@
 # ---- API keys & local config ----
 # Ignore the oEmbed/video‐info endpoint that contains your key
-/backend/youtube/video_info.php
 /backend/includes/config.php
 
 /.env
