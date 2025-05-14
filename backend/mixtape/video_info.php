@@ -1,7 +1,6 @@
 <?php
 header('Content-Type: application/json');
 require_once '../includes/db.php';
-require_once '../includes/config.php';
 require_once '../auth/session_check.php';
 
 if (!isset($_GET['video_id'])) {
@@ -11,7 +10,7 @@ if (!isset($_GET['video_id'])) {
 }
 
 $video_id = $_GET['video_id'];
-$api_key =  $cfg['YOUTUBE_API_KEY'];
+$api_key = 'AIzaSyB3kARbw6-7x133tQTpLcriW4X1DfX16a0';
 
 $api_url = "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=$video_id&key=$api_key";
 $response = file_get_contents($api_url);
@@ -34,8 +33,7 @@ $item = $data['items'][0];
 $title = $item['snippet']['title'];
 $duration_iso = $item['contentDetails']['duration'];
 
-function convert_duration($duration)
-{
+function convert_duration($duration) {
     $interval = new DateInterval($duration);
     return ($interval->h * 3600) + ($interval->i * 60) + $interval->s;
 }
@@ -70,3 +68,4 @@ echo json_encode([
 ]);
 
 $conn->close();
+?>
